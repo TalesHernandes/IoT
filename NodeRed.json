@@ -1,0 +1,416 @@
+[
+    {
+        "id": "20e13e71d72c9fc9",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b1a95d3c1d6491ef",
+        "type": "mqtt in",
+        "z": "20e13e71d72c9fc9",
+        "name": "Temperatura",
+        "topic": "ProjIoT/SensorSaoPaulo",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6adde090ebaeca09",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "f85811e57db8b177",
+                "0eeb9232050b3782"
+            ]
+        ]
+    },
+    {
+        "id": "f85811e57db8b177",
+        "type": "influxdb out",
+        "z": "20e13e71d72c9fc9",
+        "influxdb": "90f7f072e0d05930",
+        "name": "data base",
+        "measurement": "SensorSaoPaulo",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "a5174c8d1aa1abfb",
+        "bucket": "bucket_dados",
+        "x": 300,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "5dcf2d58b80d1225",
+        "type": "mqtt in",
+        "z": "20e13e71d72c9fc9",
+        "name": "Temperatura",
+        "topic": "ProjIoT/SensorRioDeJaneiro",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6adde090ebaeca09",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "6622e5efa0ff3c25",
+                "e6b9aab3f1764578"
+            ]
+        ]
+    },
+    {
+        "id": "6622e5efa0ff3c25",
+        "type": "influxdb out",
+        "z": "20e13e71d72c9fc9",
+        "influxdb": "90f7f072e0d05930",
+        "name": "data base",
+        "measurement": "SensorRioDeJaneiro",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "a5174c8d1aa1abfb",
+        "bucket": "bucket_dados",
+        "x": 300,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8f19e0040552e0f5",
+        "type": "http request",
+        "z": "20e13e71d72c9fc9",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openweathermap.org/data/2.5/weather?q=Sao%20Paulo,BR&units=metric&APPID=76d79a3d801b7038df731271d1eb2424",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 380,
+        "y": 240,
+        "wires": [
+            [
+                "0c6b576801ea3d11",
+                "57256ccfd1a3c2ed"
+            ]
+        ]
+    },
+    {
+        "id": "0c6b576801ea3d11",
+        "type": "change",
+        "z": "20e13e71d72c9fc9",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.main.temp",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "api",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 240,
+        "wires": [
+            [
+                "f842965a2f2f77f9"
+            ]
+        ]
+    },
+    {
+        "id": "f842965a2f2f77f9",
+        "type": "influxdb out",
+        "z": "20e13e71d72c9fc9",
+        "influxdb": "90f7f072e0d05930",
+        "name": "data base",
+        "measurement": "APISaoPaulo",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "a5174c8d1aa1abfb",
+        "bucket": "bucket_dados",
+        "x": 800,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b70da70a6b3c383d",
+        "type": "http request",
+        "z": "20e13e71d72c9fc9",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openweathermap.org/data/2.5/weather?q=Rio%20De%20Janeiro,BR&units=metric&APPID=76d79a3d801b7038df731271d1eb2424",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 380,
+        "y": 300,
+        "wires": [
+            [
+                "a9b29d0bf949f214",
+                "2a5c486888e79997"
+            ]
+        ]
+    },
+    {
+        "id": "a9b29d0bf949f214",
+        "type": "change",
+        "z": "20e13e71d72c9fc9",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.main.temp",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "api",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 300,
+        "wires": [
+            [
+                "7e03b5942bc40238"
+            ]
+        ]
+    },
+    {
+        "id": "7e03b5942bc40238",
+        "type": "influxdb out",
+        "z": "20e13e71d72c9fc9",
+        "influxdb": "90f7f072e0d05930",
+        "name": "data base",
+        "measurement": "APIRioDeJaneiro",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "a5174c8d1aa1abfb",
+        "bucket": "bucket_dados",
+        "x": 800,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "977fd1699f699b47",
+        "type": "inject",
+        "z": "20e13e71d72c9fc9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "8f19e0040552e0f5"
+            ]
+        ]
+    },
+    {
+        "id": "ec013876b9ac293c",
+        "type": "inject",
+        "z": "20e13e71d72c9fc9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 300,
+        "wires": [
+            [
+                "b70da70a6b3c383d"
+            ]
+        ]
+    },
+    {
+        "id": "57256ccfd1a3c2ed",
+        "type": "debug",
+        "z": "20e13e71d72c9fc9",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "2a5c486888e79997",
+        "type": "debug",
+        "z": "20e13e71d72c9fc9",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "0eeb9232050b3782",
+        "type": "debug",
+        "z": "20e13e71d72c9fc9",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "e6b9aab3f1764578",
+        "type": "debug",
+        "z": "20e13e71d72c9fc9",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6adde090ebaeca09",
+        "type": "mqtt-broker",
+        "name": "HiveMQ",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "90f7f072e0d05930",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "influxDB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://us-east-1-1.aws.cloud2.influxdata.com/",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    }
+]
