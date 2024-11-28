@@ -22,10 +22,10 @@ Este projeto visa monitorar as condições climáticas de São Paulo e Rio de Ja
 
 ## Como Usar
  - Pré-requisitos
-Wokwi: Acesse a plataforma Wokwi e carregue os códigos de simulação.
-Node-RED: Importe o arquivo node-red-flow.json para a sua instância do Node-RED.
-OpenWeather API: Inscreva-se na API do OpenWeather para obter uma chave de API e configure-a no seu código ou fluxo do Node-RED.
-MQTT Broker: Utilize um broker MQTT como o HiveMQ para gerenciar a comunicação entre os dispositivos e o servidor.
+    - Wokwi: Acesse a plataforma Wokwi e carregue os códigos de simulação.
+    - Node-RED: Importe o arquivo node-red-flow.json para a sua instância do Node-RED.
+    - OpenWeather API: Inscreva-se na API do OpenWeather para obter uma chave de API e configure-a no seu código ou fluxo do Node-RED.
+    - MQTT Broker: Utilize um broker MQTT como o HiveMQ para gerenciar a comunicação entre os dispositivos e o servidor.
 
 ## Passos
 
