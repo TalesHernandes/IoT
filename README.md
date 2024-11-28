@@ -21,17 +21,17 @@ Estrutura do Repositório
 Este projeto visa monitorar as condições climáticas de São Paulo e Rio de Janeiro, comparando os dados de temperatura em tempo real com os valores ideais definidos pelo Governo do Estado de São Paulo para identificar discrepâncias que podem ser atribuídas a problemas como ilhas de calor e poluição. Através da integração de tecnologias como IoT, MQTT, Node-RED, InfluxDB e Grafana, buscamos promover a conscientização pública sobre as mudanças climáticas e incentivar ações em direção à sustentabilidade.
 
 ## Como Usar
- - Pré-requisitos
-    - Wokwi: Acesse a plataforma Wokwi e carregue os códigos de simulação.
-    - Node-RED: Importe o arquivo node-red-flow.json para a sua instância do Node-RED.
-    - OpenWeather API: Inscreva-se na API do OpenWeather para obter uma chave de API e configure-a no seu código ou fluxo do Node-RED.
-    - MQTT Broker: Utilize um broker MQTT como o HiveMQ para gerenciar a comunicação entre os dispositivos e o servidor.
+- Pré-requisitos
+   - Wokwi: Acesse a plataforma Wokwi e carregue os códigos de simulação.
+   - Node-RED: Importe o arquivo node-red-flow.json para a sua instância do Node-RED.
+   - OpenWeather API: Inscreva-se na API do OpenWeather para obter uma chave de API e configure-a no seu código ou fluxo do Node-RED.
+   - MQTT Broker: Utilize um broker MQTT como o HiveMQ para gerenciar a comunicação entre os dispositivos e o servidor.
 
 ## Passos
 
-Simulação no Wokwi: Carregue os códigos de simulação para São Paulo e Rio de Janeiro na plataforma Wokwi, que vai simular as condições ideais de temperatura para ambas as cidades.
-Configuração do Node-RED: Importe o arquivo JSON para configurar os fluxos que processam os dados obtidos do ESP32, enviam os dados para o banco de dados InfluxDB e geram alertas em caso de discrepâncias nas temperaturas.
-Visualização: Utilize o Grafana para exibir os dados em tempo real, criando dashboards interativos que mostram as condições climáticas de ambas as cidades e as comparações com os valores ideais de temperatura.
+1. Simulação no Wokwi: Carregue os códigos de simulação para São Paulo e Rio de Janeiro na plataforma Wokwi, que vai simular as condições ideais de temperatura para ambas as cidades.
+2. Configuração do Node-RED: Importe o arquivo JSON para configurar os fluxos que processam os dados obtidos do ESP32, enviam os dados para o banco de dados InfluxDB e geram alertas em caso de discrepâncias nas temperaturas.
+3. Visualização: Utilize o Grafana para exibir os dados em tempo real, criando dashboards interativos que mostram as condições climáticas de ambas as cidades e as comparações com os valores ideais de temperatura.
 
 ## Resultados Esperados
 
